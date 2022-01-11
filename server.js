@@ -1,25 +1,29 @@
-if (process.env.NODE_ENV !== 'production') {
-    require('dotenv').config()
-  }
-  
 const express = require('express')
-const app = express()
+const servidor = express()
 const expressLayouts = require('express-ejs-layouts')
+
+let ObjectID = require("mongodb").ObjectId;
 
 const indexRouter = require('./routes/index')
 
-app.set('view engine', 'ejs')
-app.set('views', __dirname + '/views')
-app.set('layout', 'layouts/layout')
-app.use(expressLayouts)
-app.use(express.static('public'))
+servidor.set('view engine', 'ejs')
+servidor.set('views', __dirname + '/views')
+servidor.set('layout', 'layouts/layout')
+servidor.use(expressLayouts)
+servidor.use(express.static('public'))
 
-const mongoose = require('mongoose')
-mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true })
-const db = mongoose.connection
-db.on('error', error => console.error(error))
-db.once('open', () => console.log('Connected to Mongoose'))
+const MongoClient = require('mongodb').MongoClient;
+const uri = "mongodb://aff_1245:1245@cluster0-shard-00-00.ug9iz.mongodb.net:27017,cluster0-shard-00-01.ug9iz.mongodb.net:27017,cluster0-shard-00-02.ug9iz.mongodb.net:27017/myFirstDatabase?ssl=true&replicaSet=atlas-h9d9jf-shard-0&authSource=admin&retryWrites=true&w=majority";
+const client = new MongoClient(uri,{useUnifiedTopology: true});
 
-app.use('/', indexRouter)
+client.connect(err => {
+    //Imprime na consola o erro, caso este exista
+    if(err){console.log(err)};
+  
+    servidor.listen(5000,function () {
+      console.log("Servidor ligado!");
+    })
 
-app.listen(process.env.PORT || 8000)
+    servidor.use('/', indexRouter)
+    
+})
