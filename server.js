@@ -1,6 +1,6 @@
 const express = require('express')
 const servidor = express()
-const expressLayouts = require('express-ejs-layouts')
+
 
 let ObjectID = require("mongodb").ObjectId;
 
@@ -8,8 +8,7 @@ const indexRouter = require('./routes/index')
 
 servidor.set('view engine', 'ejs')
 servidor.set('views', __dirname + '/views')
-servidor.set('layout', 'layouts/layout')
-servidor.use(expressLayouts)
+
 servidor.use(express.static('public'))
 
 const MongoClient = require('mongodb').MongoClient;
