@@ -1,6 +1,7 @@
 const express = require('express')
 const servidor = express()
 
+//começar servidor -> npm run devStart
 
 let ObjectID = require("mongodb").ObjectId;
 
@@ -19,10 +20,13 @@ client.connect(err => {
     //Imprime na consola o erro, caso este exista
     if(err){console.log(err)};
   
+
     servidor.listen(5000,function () {
       console.log("Servidor ligado!");
     })
 
     servidor.use('/', indexRouter)
+
+
     
 })

@@ -1,5 +1,32 @@
-@import url("https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Racing+Sans+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter&family=Racing+Sans+One&family=Work+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 
-.logo {
-  background: transparent;
+.header-index {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("/assets/banner.jpg");
+  background-size: cover;
+  background-position-y: center;
+  background-repeat: no-repeat;
+}
+
+.texto1 {
+  font-family: "Racing Sans One", cursive;
+  color: white;
+  letter-spacing: 2px;
+}
+
+.texto1-verm {
+  font-family: "Racing Sans One", cursive;
+  color: #c60b06;
+  letter-spacing: 2px;
+}
+
+.texto2 {
+  font-family: "Work Sans", sans-serif;
+  color: white;
+}
+
+.texto2-italico {
+  font-family: "Work Sans", sans-serif;
+  font-style: italic;
+  color: white;
 }
